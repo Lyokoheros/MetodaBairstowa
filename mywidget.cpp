@@ -4,7 +4,7 @@
 
 MyWidget::MyWidget()
 {
-    degreeWindow = new QVBoxLayout(this);
+    degreeWindow = new QVBoxLayout();
     degree = new QSpinBox;
     buttonFP = new QPushButton("Zwykła");
     buttonIN = new QPushButton("Przedziałowa");
@@ -16,8 +16,8 @@ MyWidget::MyWidget()
     degreeWindow->addWidget(buttonIN);
 
 
-    connect(buttonFP, &QPushButton::clicked, this, [this](bool) {emit getParameters(degree->value(), false);});
-    connect(buttonIN, &QPushButton::clicked, this, [this](bool) {emit getParameters(degree->value(), true);});
+    connect(buttonFP, &QPushButton::clicked, this, [this](bool) {getParameters(degree->value(), false);});
+    connect(buttonIN, &QPushButton::clicked, this, [this](bool) {getParameters(degree->value(), true);});
     //QObject::connect(&button, SIGNAL(clicked()), this, SLOT(getParameters(degree->value())))
 }
 
@@ -83,6 +83,11 @@ void MyWidget::getParameters(int n, bool interval)
             parametersWindow->addWidget(lineEdit, 2, i+1);
         }
         parametersWindow->addWidget(button, 3, 1);
+
+        connect(button, &QPushButton::clicked, this, [this](bool) {
+            this->intervalSolver = new SolverInterval(prepareDoubles(parameters));
+            parametersWindow->addWidget(new QLabel(intervalSolver->solve()), 3, 1);
+        }
 
 
     }

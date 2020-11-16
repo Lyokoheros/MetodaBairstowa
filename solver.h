@@ -14,7 +14,6 @@ public:
 
     QString solve();
 
-
 private:
     int Bairstow(int Stopien,double const *tabA, double *tabP,double *tabR, double eps, int N, double p_,double r_);
     //funkcje pomocnicze

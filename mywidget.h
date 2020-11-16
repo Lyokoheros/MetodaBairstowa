@@ -3,13 +3,15 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QString>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSpinBox>
-#include <QHBoxLayout>
+#include <QGridLayout>
 #include <QVBoxLayout>
 #include <QVector2D>
 #include <solver.h>
+#include <solverinterval.h>
 
 class MyWidget: public QWidget
 {
@@ -18,7 +20,7 @@ class MyWidget: public QWidget
 public:
     MyWidget();
 
-private slots:
+private Q_SLOTS:
     void getParameters(int n, bool interval);
 
     QVector<QString> prepareDoubles(QVector<QLineEdit*> input);
@@ -33,9 +35,8 @@ private:
     QPushButton* buttonIN;
     QVector<QLineEdit*> parameters;
     Solver* solver;
+    SolverInterval* intervalSolver;
 
-
-    //QVector2D<QString*> intervalValues;
 };
 
 #endif // MYWIDGET_H

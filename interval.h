@@ -21,7 +21,7 @@
 #include <string.h>
 #include <iomanip>
 #include <fstream>
-#include <float.h>
+#include <cfloat>
 #include <typeinfo>
 
 using namespace std;
