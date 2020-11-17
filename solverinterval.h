@@ -31,6 +31,7 @@ private:
                     interval_arithmetic::Interval<double> r,
                     interval_arithmetic::Interval<double> *Q,
                     interval_arithmetic::Interval<double> *R);
+
     int LiczMOdwrotna(interval_arithmetic::Interval<double> x,
                       interval_arithmetic::Interval<double> y,
                       interval_arithmetic::Interval<double> w,

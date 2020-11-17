@@ -9,7 +9,9 @@ SolverInterval::SolverInterval(QVector<QString> Dane)
     this->tabR=new interval_arithmetic::Interval<double>[stopien/2 +1];
     //FE_TONEAREST;
     double pom1, pom2;
-
+    tabA->Initialize();
+    tabP->Initialize();
+    tabR->Initialize();
     //przypisanie do tablicy wartości
     for(int i=0; i<=stopien; i++)
     {
@@ -166,7 +168,7 @@ int SolverInterval::Bairstow(int Stopien,
 
 //funkcje pomocniczne
 int SolverInterval::PodzielWiel(int Stopien,
-                                interval_arithmetic::Interval<double> const * tabA,
+                                interval_arithmetic::Interval<double> * tabA,
                                 interval_arithmetic::Interval<double> p,
                                 interval_arithmetic::Interval<double> r,
                                 interval_arithmetic::Interval<double> *Q,
@@ -183,7 +185,7 @@ int SolverInterval::PodzielWiel(int Stopien,
     int i;
     for (i=0;i<=Stopien-2;i++)
     {
-        Q[i]=0; //wyzerowanie 'Q'
+        Q[i]=interval_arithmetic::Interval<double>(); //wyzerowanie 'Q'
     }
 
     while (Stopien>=0 && tabA[Stopien].a==0 && tabA[Stopien].b==0)

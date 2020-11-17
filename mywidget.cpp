@@ -87,7 +87,7 @@ void MyWidget::getParameters(int n, bool interval)
         connect(button, &QPushButton::clicked, this, [this](bool) {
             this->intervalSolver = new SolverInterval(prepareDoubles(parameters));
             parametersWindow->addWidget(new QLabel(intervalSolver->solve()), 3, 1);
-        }
+        });
 
 
     }
