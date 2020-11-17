@@ -60,6 +60,9 @@ public:
     Interval<T> Projection();
     Interval<T> Opposite();
     Interval<T> Inverse();
+    Interval<T> Iabs();
+    T Imaxabs();
+    T Iminabs();
     T GetWidth();
     static void Initialize();
     static Interval<T> ISqr2();
@@ -324,6 +327,52 @@ inline void Interval<T>::IEndsToStrings(string& left, string& right) {
     right = ss.str();
     ss.clear();
 }
+
+
+ template<typename T>
+ inline Interval<T> Interval<T>::Iabs() {
+     Interval<T> r(Iminabs(), Imaxabs());
+     return r;
+ }
+
+
+ template<typename T>
+ inline T Interval<T>::Iminabs() {
+     if(this->a*this->b < 0)//różne znaki - zawiera 0
+     {
+         return 0;
+     }
+     else
+     {
+         T l=abs(this->a);
+         T p=abs(this->b);
+         if(p<l)
+         {
+            return p;
+         }
+         else
+         {
+            return l;
+         }
+     }
+ }
+
+ template<typename T>
+ inline T Interval<T>::Imaxabs() {
+     T l=abs(this->a);
+     T p=abs(this->b);
+     if(p<l)
+     {
+        return l;
+     }
+     else
+     {
+        return p;
+     }
+
+ }
+
+
 
 template<typename T>
 inline Interval<T> Interval<T>::Projection() {

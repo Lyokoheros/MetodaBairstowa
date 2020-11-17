@@ -18,7 +18,7 @@ public:
 
 private:
     int Bairstow(int Stopien,
-                 interval_arithmetic::Interval<double> *tabA,
+                 interval_arithmetic::Interval<double> const *tabA,
                  interval_arithmetic::Interval<double> *tabP,
                  interval_arithmetic::Interval<double> *tabR,
                  double eps, int N,

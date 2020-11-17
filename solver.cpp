@@ -23,7 +23,7 @@ QString Solver::solve()
 {
     int q=Bairstow(stopien, tabA, tabP, tabR, 0.00000000001, 1000, -1, -1);
             //precyzję ustawić na maksymalna - do obadania
-            //100 iteracji, startowy trójmian: x^2+x+1
+            //1000 iteracji, startowy trójmian: x^2+x+1
 
     if (q==1)
     {
