@@ -13,7 +13,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <fenv.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <stdint.h>
 #include <cmath>
 #include <mpfr.h>

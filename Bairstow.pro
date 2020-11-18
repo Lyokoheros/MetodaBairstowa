@@ -2,11 +2,10 @@ QT += core gui widgets
 
 TARGET = BairstowSolver
 TEMPLATE = app
-CONFIG +=
+CONFIG += \
 no_keywords
 
 SOURCES += \
-    main.cpp \
     main.cpp \
     mywidget.cpp \
     solver.cpp \
@@ -19,7 +18,10 @@ HEADERS += \
     solverinterval.h
 
 LIBS +=\
-    -L"/usr/local/boost/boost_1_55_0" -lBoost
+    -L"/usr/local/boost/boost_1_55_0" \
+    -L"/usr/include"
+
 
 INCLUDEPATH +=\
-    /usr/local/boost/boost_1_55_0
+    /usr/local/boost/boost_1_55_0 \
+    /usr/include
