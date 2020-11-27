@@ -241,3 +241,38 @@ int SolverInterval::PodzielWiel(int Stopien,
  return 0;
 }
 
+int SolverInterval::LiczMOdwrotna(interval_arithmetic::Interval<double> x,interval_arithmetic::Interval<double> y,interval_arithmetic::Interval<double> w,interval_arithmetic::Interval<double> z, //dana macierz 2x2
+                  interval_arithmetic::Interval<double> &a, interval_arithmetic::Interval<double> &b, interval_arithmetic::Interval<double> &c,interval_arithmetic::Interval<double> &d) //wynik macierz odwrotna do danej je�eli istnieje
+{
+    if ((x*z).a == (y*w).a && (x*z).b == (y*w).b)
+    {
+        return 1; //uk�ad zale�ny (wyznacznik zerowy)
+    }
+    if (x.a*x.b*w.a*w.b!=0)
+    {
+        c=(y-z*x/w).Inverse();
+        a=(z*c/w).Opposite();
+        d=(z-y*w/x).Inverse();
+        b=(y*d/x).Inverse(); //lub
+    }
+    else if (y.a*y.b*z.a*z.b!=0)
+    {
+        a=(x-w*y/z).Inverse(); c=(w*a/z).Opposite();
+        b=(w-z*x/y).Inverse(); d=(x*b/y).Opposite(); //lub b=1/(x-y*w/z);
+    }
+    else if (x.a==0 && x.b==0 && z.a==0 && z.b==0)
+    {
+        c=y.Inverse();
+        d=interval_arithmetic::Interval<double>();
+        a=interval_arithmetic::Interval<double>();
+        b=w.Inverse();
+    }
+    else if (y.a==0 && y.b==0 && w.a==0 && w.b==0)
+    {
+        a=x.Inverse();
+        b=interval_arithmetic::Interval<double>();
+        c=interval_arithmetic::Interval<double>();
+        d=z.Inverse();
+    }
+    return 0;
+}

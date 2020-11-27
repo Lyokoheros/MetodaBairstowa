@@ -19,7 +19,7 @@ HEADERS += \
 
 LIBS +=\
     -L"/usr/local/boost/boost_1_55_0" \
-    -L"/usr/include"
+    -lmpfr
 
 
 INCLUDEPATH +=\
